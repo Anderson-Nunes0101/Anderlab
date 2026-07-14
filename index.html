@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Plataforma de Cursos - Conteúdo Acadêmico</title>
+    <!-- Bootstrap 5 + Ícones + Estilos -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/katex.min.css">
+    <link rel="stylesheet" href="static/css/github-dark.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1e2b3c, #0f1a24);
+            --card-hover: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        body {
+            background: #f4f7fc;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            font-size: 1.6rem;
+        }
+
+        .hero-section {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 2rem 0;
+            border-radius: 0 0 2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-curso {
+            cursor: pointer;
+            transition: var(--card-hover);
+            border: none;
+            border-radius: 1.2rem;
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .card-curso:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.12);
+        }
+
+        .btn-voltar {
+            background-color: #e9ecef;
+            border: none;
+            border-radius: 2rem;
+            padding: 0.5rem 1.2rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .btn-voltar:hover {
+            background-color: #dee2e6;
+            transform: translateX(-3px);
+        }
+
+        .list-group-item-action {
+            cursor: pointer;
+            transition: 0.15s;
+            border-left: 4px solid transparent;
+        }
+
+        .list-group-item-action:hover {
+            background-color: #eef2ff;
+            border-left-color: #0d6efd;
+            transform: scale(1.01);
+        }
+
+        .badge-ano {
+            background-color: #2c3e50;
+            color: white;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+        }
+
+        .conteudo-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: none;
+        }
+
+        .tema-item {
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            background: #eef2f5;
+            margin-top: 3rem;
+            padding: 1.2rem 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #4a627a;
+        }
+
+        .fade-transition {
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .btn-outline-custom {
+            border-radius: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação simples -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <span class="navbar-brand"><i class="bi bi-mortarboard-fill me-2"></i>ANDERLAB</span>
+            <span class="text-light-emphasis small">Explore cursos, disciplinas e temas</span>
+        </div>
+    </nav>
+
+    <div class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-6 fw-semibold"><i class="bi bi-book-half me-2"></i>Laboratóio do Conhecimento </h1>
+            <p class="lead mb-0">Tudo que você precisa para ser um óptimo estudante.</p>
+        </div>
+    </div>
+
+    <div class="container pb-5" id="app">
+        <!-- Área dinâmica: fluxo de navegação (curso -> ano -> disciplina -> tema -> conteúdo) -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- Botão voltar e breadcrumb dinâmico -->
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                    <button class="btn btn-voltar" id="btnVoltarNivel" style="display: none;">
+                        <i class="bi bi-arrow-left-short"></i> Voltar
+                    </button>
+                    <div id="breadcrumbNav" class="text-muted small mt-2 mt-sm-0">
+                        <i class="bi bi-house-door-fill"></i> Cursos
+                    </div>
+                </div>
+
+                <!-- Container de conteúdo principal -->
+                <div id="conteudoDinamico">
+                    <!-- Aqui será injetado via JS: cursos, anos, disciplinas, temas ou conteúdo -->
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Carregando...</span>
+                        </div>
+                        <p class="mt-3">Carregando cursos...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <i class="bi bi-journal-bookmark-fill"></i> AnderLab. &copy; Ánderson 2026.
+        </div>
+    </footer>
+
+    <script src="static/js/anderson.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/mermaid.min.js"></script>
+    <script src="static/js/highlight.min.js"></script>
+    <script src="static/js/katex.min.js"></script>
+    <script src="static/js/auto-render.min.js"></script>
+</body>
+</html>
